@@ -1,4 +1,4 @@
-# gittest
+# Supermall Project
 
 ## Project setup
 ```
