@@ -1,18 +1,29 @@
 <template>
+    <div id="app">
+        <!-- tab-bar 是TabBar.vue 的插槽 slot的占位 -->
+        <router-view></router-view>
+<tab-bar>  
+    
 
+
+</tab-bar>
+</div>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
+    import tabBar from "./components/common/TabBar.vue"; //（1）导入父组件,父插槽
+    import tabBarItem from "./components/content/TabBarItem.vue" //（1）导入子组件
+    // import router from "./router"
 
     export default {
         name: 'App',
         components: {
-            HelloWorld
+            tabBar,
+            tabBarItem,
         }
     }
 </script>
 
 <style>
-    @import url(./assets/css/normalize.css);
+    @import "assets/css/base.css";
 </style>
