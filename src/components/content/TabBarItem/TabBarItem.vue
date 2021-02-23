@@ -20,7 +20,7 @@
 </template>
 
 <script>
-    import router from '../../router';
+    import router from 'router/index.js';
     export default {
         name: "tabBarItem",
         props: {
