@@ -1,8 +1,11 @@
 <template>
     <div class="TabControl">
-        <div v-for="(item,index) in title" class="TabControl-item" >
+        <div v-for="(item,index) in title" 
+        class="TabControl-item"
+        :class="{active: index == CurrectIndex}"
+        @click="ControlClick(index)">
             <!-- 注意：要使用变量的地方都是动态绑定 -->
-            <span :class="{active: index == CurrectIndex}" @click="ControlClick(index)">{{item}}</span>
+            <span >{{item}}</span>
         </div>
     </div>
 </template>
@@ -16,6 +19,7 @@
         methods: {
             ControlClick(index) {
                 this.CurrectIndex = index;
+                this.$emit("switchClick", index)
             }
         },
         props: {
@@ -32,9 +36,11 @@
     .TabControl {
         display: flex;
         text-align: center;
+        z-index: 9;
         background-color: #fff;
         height: 44px;
         line-height: 44px;
+        width: 100%;
     }
     
     .TabControl-item {
@@ -45,7 +51,7 @@
         padding: 5px;
     }
     
-    .active {
+    .active span {
         color: #ff8198;
         border-bottom: 2px solid deeppink;
     }

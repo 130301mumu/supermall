@@ -74,14 +74,14 @@
     
     .tab-bar-item {
         flex: 1;
-        height: 59px;
+        height: 49px;
         text-align: center;
         font-size: 14px;
+        margin-top: 5px;
     }
     
     .tab-bar-item .item-img img {
         width: 24px;
-        margin: 0 auto;
     }
     
     .active {
