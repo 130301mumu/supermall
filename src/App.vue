@@ -1,7 +1,12 @@
 <template>
     <div id="app">
         <!-- tab-bar 是TabBar.vue 的插槽 slot的占位 -->
-        <router-view></router-view>
+        <!-- /* 包裹路由, 缓存页面 */ -->
+            <router-view v-slot="{ Component }">
+                <keep-alive exclude="detail">
+                    <component :is="Component" />
+                </keep-alive>
+            </router-view>
         <tab-bar></tab-bar>
     </div>
 </template>

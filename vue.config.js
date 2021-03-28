@@ -5,7 +5,7 @@ module.exports = {
         resolve: {
             alias: {
                 "assets": "@/assets", //使用时 全局dom：~assets  导入时：assets ;都代表辣路径 src/assets
-                "commit": "@/commit",
+                "common": "@/common",
                 "components": "@/components",
                 "network": "@/network",
                 "views": "@/views",

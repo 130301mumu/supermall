@@ -14,6 +14,8 @@ const cart = () =>
     import ("../views/cart/Cart")
 const profile = () =>
     import ("../views/profile/Profile")
+const detail = () =>
+    import ("../views/detail/Detail")
 
 
 const routes = [{
@@ -34,6 +36,10 @@ const routes = [{
     }, {
         path: "/profile",
         component: profile
+    }, {
+        path: "/detail/:iid", //绑定动态路由；:iid现在相当于一个变量
+        // iid的作用：给数据请求  的 params赋值
+        component: detail
     }
 ]
 const router = new createRouter({

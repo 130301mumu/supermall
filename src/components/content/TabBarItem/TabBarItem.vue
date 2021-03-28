@@ -1,6 +1,6 @@
 <!-- 文件作用：管理自己组件页面,一个组件在插槽的作用下变成几个不同的组件样式 -->
 <template>
-    <div class="tab-bar-item" @click="itemclick">
+    <div class="tab-bar-item" @click="itemclick" >
         <!-- 为了动态的展示 img 和 text ,这里使用两个插槽代替 -->
         <!-- 为什么在每一个 slot 上加 <div>？:为了避免dom<组件>对 <slot> 直接覆盖，影响<slot>中的属性 -->
         <div v-if="!isActive" class="item-img">
@@ -30,7 +30,7 @@
             isStyle: {
                 type: String,
                 default: 'blue'
-            }
+            },
         },
         data() {
             return {
@@ -54,18 +54,12 @@
         methods: {
             itemclick() {
                 this.$router.replace(this.path).catch(err => {}); //路由跳转
-                console.log(this.path);
             }
         },
         // mounted() {
         //     console.log(this.$route); // 无法打印出正常的url信息
         // },
-        mounted() {
-            let _this = this;
-            setTimeout(function() {
-                console.log(_this.$route.path);
-            }, 100);
-        }
+        mounted() {}
     }
 </script>
 

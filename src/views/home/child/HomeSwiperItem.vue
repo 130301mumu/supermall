@@ -4,7 +4,7 @@
         <Swiper class="HomeSwiper">
             <SwiperItem v-for="item in banner">
                 <a :href="item.link">
-                    <img :src="item.image" alt="">
+                    <img :src="item.image" alt="" @load="swiperImageLoad">
                 </a>
             </SwiperItem>
         </Swiper>
@@ -21,6 +21,11 @@
             Swiper,
             SwiperItem
         },
+        data() {
+            return {
+                load: true
+            }
+        },
         props: {
             banner: {
                 type: Array,
@@ -28,6 +33,14 @@
                     return []
                 }
             }
+        },
+        methods: {
+            swiperImageLoad() { //作用：只需加载完第一张图片即可，因为高度都是一样
+                if (this.load) {
+                    this.$emit("swiperImageLoad");
+                    this.load = false
+                }
+            },
         }
     }
 </script>

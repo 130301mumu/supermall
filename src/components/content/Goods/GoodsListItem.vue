@@ -1,18 +1,42 @@
 <template>
-    <div class="goods-item">
-        <img :src="GoodsListItem.show.img" alt="">
-        <div class="goods-info">
-          <p>{{GoodsListItem.title}}</p>
-          <span class="price">{{GoodsListItem.price}}</span>
-          <span class="collect">{{GoodsListItem.cfav}}</span>
-        </div>
-      </div>
+    <div class="goods-item" @click="getDetailClick">
+        <!-- <a :href="GoodsListItem.link"> -->
+            <img :src="goodListImage" alt="" @load="imgLoad">
+            <div class="goods-info">
+              <p>{{GoodsListItem.title}}</p>
+              <span class="price">{{GoodsListItem.price}}</span>
+              <span class="collect">{{GoodsListItem.cfav}}</span>
+            </div>
+        <!-- </a> -->
+    </div>
 </template>
 <script>
     export default {
         props: {
             GoodsListItem: {
                 type: Object
+            },
+        },
+        computed: {
+            goodListImage() {
+                return this.GoodsListItem.show && this.GoodsListItem.show.img || this.GoodsListItem.image
+            }
+        },
+        methods: {
+            imgLoad() {
+                //在组件A中使用事务总线触发某个动作，用mitt的属性emit发送
+
+                //在m页面也应用该组件时，my页面的刷新要和主页面分开
+                if (this.$route.path.indexOf('/home') != -1) {
+                    this.$bus.emit("itemImgLoad");
+                } else if (this.$route.path.indexOf('/detail/') != -1) {
+                    this.$bus.emit("itemImgLoad");
+                }
+            },
+            //路由跳转到详情页
+            getDetailClick() {
+                //动态路由作用 ：iid = this.GoodsListItem.iid
+                this.$router.push("/detail/" + this.GoodsListItem.iid) //不同的GoodListItem得到不同的iid；不同的iid得到不同的详情页数据
             }
         }
     }

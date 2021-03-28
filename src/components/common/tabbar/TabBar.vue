@@ -3,9 +3,9 @@
 <div id="tab-bar-div">
     <div id="tab-bar">
 <!-- 首页 -->
-<tab-bar-item path="/home" isStyle="deeppink" >
+<tab-bar-item path="/home" isStyle="deeppink">
     <template  v-slot:item-img1 >
-       <img src="~assets/img/tabbar/index.png" alt="">
+       <img src="~assets/img/tabbar/index.png" alt="" >
     </template>
 <template v-slot:item-img2>
         <img  src="~assets/img/tabbar/index2.png" alt="">
@@ -76,7 +76,6 @@
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 9;
         box-shadow: 0 -2px 1px rgba(0, 0, 0, .1);
         background-color: #f6f6f6;
         height: 49px;
